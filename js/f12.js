@@ -2,11 +2,17 @@
     const threshold = 160;
     const warningUrl = 'https://www.facebook.com/vchinh.it'; // Thay đổi URL này thành URL của trang cảnh báo của bạn
 
+    const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+
     const redirectToWarning = function() {
         window.location.href = warningUrl;
     };
 
     const detectDevTools = function() {
+        if (isMobileDevice) {
+            return; // Bỏ qua kiểm tra DevTools trên thiết bị di động
+        }
+
         const widthThreshold = window.outerWidth - window.innerWidth > threshold;
         const heightThreshold = window.outerHeight - window.innerHeight > threshold;
         if (widthThreshold || heightThreshold) {
@@ -32,7 +38,7 @@
         }
 
         // Chặn Ctrl+U (Xem nguồn trang)
-        if (event.ctrlKey && event.key === 'u') {
+        if (event.ctrlKey && (event.key === 'U' || event.key === 'u')) {
             event.preventDefault();
         }
 
@@ -58,7 +64,7 @@
 
     window.addEventListener('keyup', function(event) {
         // Chặn Ctrl+U (Xem nguồn trang)
-        if (event.ctrlKey && event.key === 'u') {
+        if (event.ctrlKey && (event.key === 'U' || event.key === 'u')) {
             event.preventDefault();
         }
     });
