@@ -1,6 +1,6 @@
 (function() {
     const threshold = 160;
-    const warningUrl = 'https://www.facebook.com/vchinh.it'; // Thay đổi URL này thành URL của trang cảnh báo của bạn
+    const warningUrl = '404.html'; // Thay đổi URL này thành URL của trang cảnh báo của bạn
 
     const isMobileDevice = /Mobi|Android/i.test(navigator.userAgent);
 
